@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  brand: MyString
+  model: MyString
+  year: 1
+  rentaldates: 2014-05-04
+  price: 1
+  location: MyString
+  auto_transmission: false
+  mileage: 1
+  color: MyString
+  image_url: MyString
+  remarks: MyText
+
+two:
+  brand: MyString
+  model: MyString
+  year: 1
+  rentaldates: 2014-05-04
+  price: 1
+  location: MyString
+  auto_transmission: false
+  mileage: 1
+  color: MyString
+  image_url: MyString
+  remarks: MyText

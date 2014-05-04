@@ -1,0 +1,81 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Brand:</strong>
+  <%= @car.brand %>
+</p>
+
+<p>
+  <strong>Model:</strong>
+  <%= @car.model %>
+</p>
+
+<p>
+  <strong>Year:</strong>
+  <%= @car.year %>
+</p>
+
+<p>
+  <strong>Rentaldates:</strong>
+  <%= @car.rentaldates %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @car.price %>
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @car.location %>
+</p>
+
+<p>
+  <strong>Auto transmission:</strong>
+  <%= @car.auto_transmission %>
+</p>
+
+<p>
+  <strong>Mileage:</strong>
+  <%= @car.mileage %>
+</p>
+
+<p>
+  <strong>Color:</strong>
+  <%= @car.color %>
+</p>
+
+<p>
+  <strong>Image url:</strong>
+  <%= @car.image_url %>
+</p>
+
+<p>
+  <strong>Remarks:</strong>
+  <%= @car.remarks %>
+</p>
+
+<h2>Reviews</h2>
+<div id="reviews">
+  <% @car.reviews.each do |review| %>
+  <%= div_for review do %>
+  <p>
+    <strong>Posted <%= time_ago_in_words(review.created_at) %></strong><br />
+    <%= h(review.ratings) %>
+    <%= h(review.comment) %>
+  </p>
+  <% end %>
+  <% end %>
+</div>
+
+<%= form_for([@car, Review.new]) do |f| %>
+<p><%= f.label :ratings, "New Ratings" %><br />
+   <%= f.text_area :ratings %><br />
+   <%= f.label :comment, "New Comment" %><br />
+   <%= f.text_area :comment %>
+</p>
+<p><%= f.submit "Add Comment" %> </p>
+<% end %>
+
+<%= link_to 'Edit', edit_car_path(@car) %> |
+<%= link_to 'Back', cars_path %>
