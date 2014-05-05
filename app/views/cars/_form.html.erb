@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= f.label :brand %><br>
-    <%= f.text_field :brand %>
+    <%= f.select :brand, Car::BRAND_TYPE, prompt: 'Select a Brand' %>
   </div>
   <div class="field">
     <%= f.label :model %><br>
