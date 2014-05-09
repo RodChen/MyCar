@@ -10,10 +10,11 @@
       </ul>
     </div>
   <% end %>
-
+  <fieldset>
+  <legend>New Car</legend>
   <div class="field">
     <%= f.label :brand %><br>
-    <%= f.text_field :brand %>
+    <%= f.select :brand, Car::BRAND_TYPE, prompt: 'Select a Brand' %>
   </div>
   <div class="field">
     <%= f.label :model %><br>
@@ -55,7 +56,9 @@
     <%= f.label :remarks %><br>
     <%= f.text_area :remarks %>
   </div>
+  </fieldset>
   <div class="actions">
     <%= f.submit %>
   </div>
+    
 <% end %>
