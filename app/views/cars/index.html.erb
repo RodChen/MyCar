@@ -23,6 +23,7 @@
   <tbody>
     <% @cars.each do |car| %>
       <tr>
+        <td><%= image_tag car.avatar.url(:thumb) %></td>
         <td><%= car.brand %></td>
         <td><%= car.model %></td>
         <td><%= car.year %></td>
@@ -34,7 +35,7 @@
         <td><%= car.color %></td>
         <td><%= car.image_url %></td>
         <td><%= car.remarks %></td>
-        <td><%= link_to 'Show', car %></td>
+        <td><%= link_to car.brand, car %></td>
         <td><%= link_to 'Edit', edit_car_path(car) %></td>
         <td><%= link_to 'Destroy', car, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>

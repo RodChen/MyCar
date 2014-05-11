@@ -51,6 +51,10 @@
   <%= @car.image_url %>
 </p>
 
+<%= image_tag @car.avatar.url %>
+<%= image_tag @car.avatar.url(:medium) %>
+<%= image_tag @car.avatar.url(:thumb) %>
+
 <p>
   <strong>Remarks:</strong>
   <%= @car.remarks %>

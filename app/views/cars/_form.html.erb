@@ -1,4 +1,4 @@
-<%= form_for(@car) do |f| %>
+<%= form_for(@car, :url => cars_path, :html => { :multipart => true }) do |f| %>
   <% if @car.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@car.errors.count, "error") %> prohibited this car from being saved:</h2>
@@ -56,6 +56,11 @@
     <%= f.label :remarks %><br>
     <%= f.text_area :remarks %>
   </div>
+  
+  <div class="field">
+  <%= f.file_field :avatar %>
+  </div>
+  
   </fieldset>
   <div class="actions">
     <%= f.submit %>
