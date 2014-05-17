@@ -1,5 +1,6 @@
 class CarItemsController < ApplicationController
   include CurrentLease
+  before_action :authenticate_user!
   before_action :set_lease, only: [:create]
   before_action :set_car_item, only: [:show, :edit, :update, :destroy]
 
