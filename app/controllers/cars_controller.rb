@@ -1,6 +1,6 @@
 class CarsController < ApplicationController
   before_action :set_car, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate, except: [:index, :show]
+  before_action :authenticate_user!, except: [:index, :show]
 
   # GET /cars
   # GET /cars.json
@@ -73,9 +73,4 @@ class CarsController < ApplicationController
       params.require(:car).permit(:brand, :model, :year, :rentaldates, :price, :location, :auto_transmission, :mileage, :color, :image_url, :remarks, :avatar)
     end
 
-    def authenticate
-      authenticate_or_request_with_http_basic do |name, password|
-        name == "David" && password == "secret"
-      end
-    end
 end
