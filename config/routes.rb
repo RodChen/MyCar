@@ -3,6 +3,8 @@ MyCar::Application.routes.draw do
 
   resources :leases
 
+  devise_for :users
+
   get "main/index"
   #resources :reviews
   root 'main#index', as: 'main'
