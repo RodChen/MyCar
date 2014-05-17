@@ -10,7 +10,6 @@ class CreateCars < ActiveRecord::Migration
       t.boolean :auto_transmission
       t.integer :mileage
       t.string :color
-      t.string :image_url
       t.text :remarks
 
       t.timestamps

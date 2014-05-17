@@ -16,15 +16,11 @@
         <dd>Rental Price: <%= car.price %></dd>
         <dd>Parked At: <%= car.location %></dd>
         <dd>Description: <%= truncate(strip_tags(car.remarks), length: 80) %></dd>
+        <%= button_to 'Lease', car_items_path(car_id: car) %>
       </dl>
     </td>
-    <td class="list_actions">
-      <%= link_to 'Edit', edit_car_path(car) %><br/>
-      <%= link_to 'Destroy', car, method: :delete,
-                  data: { confirm: 'Are you sure?' } %>
-    </td>
+
   </tr>
 <% end %>
 </table>
 <br />
-<%= link_to 'New car', new_car_path %>

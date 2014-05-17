@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140509015817) do
+ActiveRecord::Schema.define(version: 20140517083125) do
+
+  create_table "car_items", force: true do |t|
+    t.integer  "car_id"
+    t.integer  "lease_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "car_items", ["car_id"], name: "index_car_items_on_car_id"
+  add_index "car_items", ["lease_id"], name: "index_car_items_on_lease_id"
 
   create_table "cars", force: true do |t|
     t.string   "brand"
@@ -31,6 +41,11 @@ ActiveRecord::Schema.define(version: 20140509015817) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+  end
+
+  create_table "leases", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "reviews", force: true do |t|

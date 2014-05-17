@@ -46,19 +46,16 @@
   <%= @car.color %>
 </p>
 
-<p>
-  <strong>Image url:</strong>
-  <%= @car.image_url %>
-</p>
 
-<%= image_tag @car.avatar.url %>
 <%= image_tag @car.avatar.url(:medium) %>
-<%= image_tag @car.avatar.url(:thumb) %>
 
 <p>
   <strong>Remarks:</strong>
   <%= @car.remarks %>
 </p>
+
+<%= button_to 'Lease', car_items_path(car_id: @car) %>
+
 </fieldset>
 <h2>Reviews</h2>
 <div id="reviews">

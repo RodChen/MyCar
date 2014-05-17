@@ -1,6 +1,11 @@
 MyCar::Application.routes.draw do
-  #resources :reviews
+  resources :car_items
 
+  resources :leases
+
+  get "main/index"
+  #resources :reviews
+  root 'main#index', as: 'main'
   resources :cars do
     resources :reviews
   end
