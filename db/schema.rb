@@ -11,13 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140517083125) do
+ActiveRecord::Schema.define(version: 20140524061759) do
 
   create_table "car_items", force: true do |t|
     t.integer  "car_id"
     t.integer  "lease_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.date     "startdate"
+    t.date     "enddate"
   end
 
   add_index "car_items", ["car_id"], name: "index_car_items_on_car_id"
@@ -41,6 +43,14 @@ ActiveRecord::Schema.define(version: 20140517083125) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+  end
+
+  create_table "events", force: true do |t|
+    t.string   "name"
+    t.datetime "start_at"
+    t.datetime "end_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "leases", force: true do |t|

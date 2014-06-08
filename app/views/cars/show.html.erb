@@ -1,3 +1,4 @@
+<%= stylesheet_link_tag "event_calendar" %>
 <p id="notice"><%= notice %></p>
 <fieldset>
 <legend>Car Info</legend>  
@@ -54,7 +55,10 @@
   <%= @car.remarks %>
 </p>
 
+
+
 <%= button_to 'Lease', car_items_path(car_id: @car) %>
+
 
 </fieldset>
 <h2>Reviews</h2>

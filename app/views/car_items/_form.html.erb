@@ -1,0 +1,32 @@
+<%= form_for(@car_item) do |f| %>
+  <% if @car_item.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@car_item.errors.count, "error") %> prohibited this car_item from being saved:</h2>
+
+      <ul>
+      <% @car_item.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<fieldset>
+  <legend>Rental Period</legend>
+ 
+  <div class="field">
+    <%= f.label :startdate %><br>
+    <%= f.date_select :startdate %>
+  </div>
+
+  <div class="field">
+    <%= f.label :enddate %><br>
+    <%= f.date_select :enddate %>
+  </div>
+    
+  </fieldset>
+  
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

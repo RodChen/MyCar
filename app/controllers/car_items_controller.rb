@@ -29,16 +29,17 @@ class CarItemsController < ApplicationController
   def create
     car = Car.find(params[:car_id])
     @car_item = @lease.car_items.build(car: car)
-
-    respond_to do |format|
-      if @car_item.save
-        format.html { redirect_to @car_item.lease, notice: 'Car item was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @car_item }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @car_item.errors, status: :unprocessable_entity }
-      end
-    end
+    redirect_to edit_car_item_path(car)
+    
+    # respond_to do |format|
+    #   if @car_item.save
+    #     format.html { redirect_to edit_car_item_path(car), notice: 'Car item was successfully created.' }
+    #     format.json { render action: 'show', status: :created, location: @car_item }
+    #   else
+    #     format.html { render action: 'new' }
+    #     format.json { render json: @car_item.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   # PATCH/PUT /car_items/1
@@ -73,6 +74,6 @@ class CarItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def car_item_params
-      params.require(:car_item).permit(:car_id, :lease_id)
+      params.require(:car_item).permit(:car_id, :lease_id, :startdate, :enddate)
     end
 end

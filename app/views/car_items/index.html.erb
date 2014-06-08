@@ -1,0 +1,25 @@
+<h1>Listing leases</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @leases.each do |lease| %>
+      <tr>
+        <td><%= link_to 'Show', lease %></td>
+        <td><%= link_to 'Edit', edit_lease_path(lease) %></td>
+        <td><%= link_to 'Destroy', lease, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Lease', new_lease_path %>

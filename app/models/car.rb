@@ -8,10 +8,10 @@ class Car < ActiveRecord::Base
 	validates_presence_of :location
 	validates_presence_of :mileage
 	validates :price, numericality: {greater_than_or_equal_to: 100}
-	
 	has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/:style/missing.png"
   	validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
-
+  
+   
   	before_destroy :ensure_not_referenced_by_any_car_item
 
 	BRAND_TYPE = ["HONDA",
