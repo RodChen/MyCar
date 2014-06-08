@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140524061759) do
+ActiveRecord::Schema.define(version: 20140608080409) do
 
   create_table "car_items", force: true do |t|
     t.integer  "car_id"
@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(version: 20140524061759) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.integer  "user_id"
   end
 
   create_table "events", force: true do |t|
