@@ -1,6 +1,5 @@
-<h1>Editing lease</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Show', @lease %> |
-<%= link_to 'Back', leases_path %>
+<%- model_class = Lease -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => [:'helpers.titles.edit', 'Edit %{model}'], :model => model_class.model_name.human %></h1>
+</div>
+<%= render :partial => 'form' %>

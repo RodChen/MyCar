@@ -5,7 +5,11 @@ class CarsController < ApplicationController
   # GET /cars
   # GET /cars.json
   def index
-    @cars = current_user.cars
+    if current_user.blank?
+      @cars = Car.all
+    else
+      @cars = current_user.cars
+    end
   end
 
   # GET /cars/1
@@ -66,7 +70,7 @@ class CarsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_car
-      @car = current_user.cars.find(params[:id])
+      @car = Car.find(params[:id])
 
     end
 

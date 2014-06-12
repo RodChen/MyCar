@@ -17,11 +17,41 @@
   <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
   <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
 <% end %>
+</div>
+
+    <div class="navbar">
+      <div class="navbar-inner">
+            <a class="brand" href="/">MyCar</a>
+        <ul class="nav">
+            <li><a href="/cars">Car Owner</a></li>
+            <li><a href="/leases">Car Leases</a></li>
+            <li><a href="#">Contact US</a></li> 
+            <li><a href="#">Link</a></li>
+              <form class="navbar-search pull-left">
+              <input type="text" class="search-query" placeholder="Search">
+              <button type="submit" class="btn">Search</button>
+              </form>
+
+        </ul>
+      </div>
+
+    </div>
 
 <body class='<%= controller.controller_name %>'>
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
-<%= yield %>
+
+<div class="container">
+  <div class="row">
+    <div class="span9"><%= yield %></div>
+    <div class="span3">
+      <h2>About Us</h2>
+      MyCar is a car sharing service that allows car owners to make money on his cars by renting it out to who needs it for a fee.
+    </div>
+  </div>
+
+
+</div>
 
 </body>
 </html>

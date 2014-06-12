@@ -1,65 +1,104 @@
-<%= form_for(@car, :url => cars_path, :html => { :multipart => true }) do |f| %>
-  <% if @car.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@car.errors.count, "error") %> prohibited this car from being saved:</h2>
-
-      <ul>
-      <% @car.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+<%= form_for @car, :html => { :class => 'form-horizontal' } do |f| %>
+  <div class="control-group">
+    <%= f.label :brand, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :brand, :class => 'text_field' %>
     </div>
-  <% end %>
-  <fieldset>
-  <legend>New Car</legend>
-  <div class="field">
-    <%= f.label :brand %><br>
-    <%= f.select :brand, Car::BRAND_TYPE, prompt: 'Select a Brand' %>
   </div>
-  <div class="field">
-    <%= f.label :model %><br>
-    <%= f.text_field :model %>
+  <div class="control-group">
+    <%= f.label :model, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :model, :class => 'text_field' %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :year %><br>
-    <%= f.number_field :year %>
+  <div class="control-group">
+    <%= f.label :year, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :year, :class => 'text_field' %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :rentaldates %><br>
-    <%= f.date_select :rentaldates %>
+  <div class="control-group">
+    <%= f.label :rentaldates, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :rentaldates, :class => 'text_field' %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :price %><br>
-    <%= f.number_field :price %>
+  <div class="control-group">
+    <%= f.label :price, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :price, :class => 'text_field' %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :location %><br>
-    <%= f.text_field :location %>
+  <div class="control-group">
+    <%= f.label :location, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :location, :class => 'text_field' %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :auto_transmission %><br>
-    <%= f.check_box :auto_transmission %>
+  <div class="control-group">
+    <%= f.label :auto_transmission, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :auto_transmission, :class => 'text_field' %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :mileage %><br>
-    <%= f.number_field :mileage %>
+  <div class="control-group">
+    <%= f.label :mileage, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :mileage, :class => 'text_field' %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :color %><br>
-    <%= f.text_field :color %>
+  <div class="control-group">
+    <%= f.label :color, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :color, :class => 'text_field' %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :remarks %><br>
-    <%= f.text_area :remarks %>
+  <div class="control-group">
+    <%= f.label :image_url, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :image_url, :class => 'text_field' %>
+    </div>
   </div>
-  
-  <div class="field">
-  <%= f.file_field :avatar %>
+  <div class="control-group">
+    <%= f.label :remarks, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :remarks, :class => 'text_field' %>
+    </div>
   </div>
-  
-  </fieldset>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="control-group">
+    <%= f.label :avatar_file_name, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :avatar_file_name, :class => 'text_field' %>
+    </div>
   </div>
-    
+  <div class="control-group">
+    <%= f.label :avatar_content_type, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :avatar_content_type, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :avatar_file_size, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :avatar_file_size, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :avatar_updated_at, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :avatar_updated_at, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :user_id, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :user_id, :class => 'text_field' %>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                cars_path, :class => 'btn' %>
+  </div>
 <% end %>
