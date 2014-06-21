@@ -1,7 +1,78 @@
-
-
 <%- model_class = Car -%>
 <div class="page-header">
   <h1><%=t '.title', :default => [:'helpers.titles.edit', 'Edit %{model}'], :model => model_class.model_name.human %></h1>
 </div>
-<%= render :partial => 'form' %>
+
+<%= form_for(@car, :url => car_path(@car), :html => { :multipart => true }, :method => :patch) do |f| %>
+ 
+  <div class="control-group">
+    <%= f.label :brand, :class => 'control-label' %>
+    <div class="controls">
+    <%= f.collection_select :brand, Brand.all, :id, :name, :class => 'text_field' %>
+
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :model, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :model, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :year, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.number_field :year, :class => 'number_field' %>
+    </div>
+  </div>
+   <div class="control-group">
+    <%= f.label :price, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.number_field :price, :class => 'number_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :location, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :location, :class => 'text_field' %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :auto_transmission, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.check_box :auto_transmission, :class => 'check_box' %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :mileage, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.number_field :mileage, :class => 'number_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :color, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :color, :class => 'text_field' %>
+    </div>
+  </div>
+  
+  <div class="control-group">
+    <%= f.label :remarks, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :remarks, :class => 'text_field' %>
+    </div>
+  </div>
+  
+   <div class="field">
+    <%= f.file_field :avatar %>
+    </div>
+
+<div class="form-actions">
+  <%= f.submit nil, :class => 'btn btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                cars_path, :class => 'btn' %>
+  </div>
+
+<% end %>

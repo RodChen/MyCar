@@ -11,7 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140608080409) do
+ActiveRecord::Schema.define(version: 20140621090540) do
+
+  create_table "brands", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "car_items", force: true do |t|
     t.integer  "car_id"
@@ -26,7 +32,6 @@ ActiveRecord::Schema.define(version: 20140608080409) do
   add_index "car_items", ["lease_id"], name: "index_car_items_on_lease_id"
 
   create_table "cars", force: true do |t|
-    t.string   "brand"
     t.string   "model"
     t.integer  "year"
     t.date     "rentaldates"
@@ -44,7 +49,10 @@ ActiveRecord::Schema.define(version: 20140608080409) do
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
     t.integer  "user_id"
+    t.integer  "brand_id"
   end
+
+  add_index "cars", ["brand_id"], name: "index_cars_on_brand_id"
 
   create_table "events", force: true do |t|
     t.string   "name"

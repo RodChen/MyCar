@@ -6,7 +6,8 @@ class CarsController < ApplicationController
   # GET /cars.json
   def index
     if current_user.blank?
-      @cars = Car.all
+      #redirect_to user_session_path
+      @cars = {}
     else
       @cars = current_user.cars
     end
@@ -30,7 +31,7 @@ class CarsController < ApplicationController
   # POST /cars
   # POST /cars.json
   def create
-    @car = current_user.cars.build(car_params)
+    @car = current_user.cars.new(car_params)
 
     respond_to do |format|
       if @car.save
@@ -76,7 +77,7 @@ class CarsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def car_params
-      params.require(:car).permit(:brand, :model, :year, :rentaldates, :price, :location, :auto_transmission, :mileage, :color, :image_url, :remarks, :avatar)
+      params.require(:car).permit(:brand, :model, :year, :rentaldates, :price, :location, :auto_transmission, :mileage, :color, :image_url, :remarks, :avatar, :brand_id)
     end
 
 end

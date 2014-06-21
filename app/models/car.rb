@@ -2,9 +2,9 @@ class Car < ActiveRecord::Base
 	has_many :car_items
 	has_many :reviews, dependent: :destroy
 	belongs_to :user
-	validates_presence_of :brand
+	belongs_to :brand
+	validates_presence_of :brand_id
 	validates_presence_of :model
-	validates_presence_of :rentaldates
 	validates_presence_of :price
 	validates_presence_of :location
 	validates_presence_of :mileage

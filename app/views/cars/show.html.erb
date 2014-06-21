@@ -5,13 +5,11 @@
 
 <dl class="dl-horizontal">
   <dt><strong><%= model_class.human_attribute_name(:brand) %>:</strong></dt>
-  <dd><%= @car.brand %></dd>
+  <dd><%= @car.brand.name %></dd>
   <dt><strong><%= model_class.human_attribute_name(:model) %>:</strong></dt>
   <dd><%= @car.model %></dd>
   <dt><strong><%= model_class.human_attribute_name(:year) %>:</strong></dt>
   <dd><%= @car.year %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:rentaldates) %>:</strong></dt>
-  <dd><%= @car.rentaldates %></dd>
   <dt><strong><%= model_class.human_attribute_name(:price) %>:</strong></dt>
   <dd><%= @car.price %></dd>
   <dt><strong><%= model_class.human_attribute_name(:location) %>:</strong></dt>
@@ -26,16 +24,6 @@
   <dd><%= @car.image_url %></dd>
   <dt><strong><%= model_class.human_attribute_name(:remarks) %>:</strong></dt>
   <dd><%= @car.remarks %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:avatar_file_name) %>:</strong></dt>
-  <dd><%= @car.avatar_file_name %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:avatar_content_type) %>:</strong></dt>
-  <dd><%= @car.avatar_content_type %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:avatar_file_size) %>:</strong></dt>
-  <dd><%= @car.avatar_file_size %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:avatar_updated_at) %>:</strong></dt>
-  <dd><%= @car.avatar_updated_at %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:user_id) %>:</strong></dt>
-  <dd><%= @car.user_id %></dd>
 </dl>
 
 <%= image_tag @car.avatar.url(:medium) %>
