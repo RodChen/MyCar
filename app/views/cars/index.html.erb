@@ -23,7 +23,7 @@
       <tr>
         <td><%= link_to car.id, car_path(car) %></td>
         <td><%= link_to( image_tag(car.avatar.url(:thumb)), car, class: 'list_image') %></td>
-        <td><%= car.brand %></td>
+        <td><%= car.brand.name %></td>
         <td><%= car.model %></td>
         <td><%= car.year %></td>
         <td><%= car.price %></td>
