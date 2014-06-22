@@ -6,11 +6,11 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 #Car.delete_all
-# user = User.new
-# user.email = 'demo1@mycar.com'
-# user.password = 'MyCar123456'
-# user.password_confirmation = 'MyCar123456'
-# user.save!
+user = User.new
+user.email = 'demo1@mycar.com'
+user.password = 'MyCar123456'
+user.password_confirmation = 'MyCar123456'
+user.save!
 
 car1 = Car.new
 car1.brand_id = 1
