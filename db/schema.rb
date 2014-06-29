@@ -40,7 +40,6 @@ ActiveRecord::Schema.define(version: 20140623231821) do
     t.boolean  "auto_transmission"
     t.integer  "mileage"
     t.string   "color"
-    t.string   "image_url"
     t.text     "remarks"
     t.datetime "created_at"
     t.datetime "updated_at"
