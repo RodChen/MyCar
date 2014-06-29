@@ -35,6 +35,14 @@ class CarsController < ApplicationController
 
     respond_to do |format|
       if @car.save
+
+        if params[:images]
+        #===== The magic is here ;)
+        params[:images].each { |image|
+          @car.pictures.create(image: image)
+        }
+        end
+        
         format.html { redirect_to @car, notice: 'Car was successfully created.' }
         format.json { render action: 'show', status: :created, location: @car }
       else

@@ -1,6 +1,7 @@
 class Car < ActiveRecord::Base
 	has_many :car_items
 	has_many :reviews, dependent: :destroy
+	has_many :pictures, :dependent => :destroy
 	belongs_to :user
 	belongs_to :brand
 	validates_presence_of :brand_id

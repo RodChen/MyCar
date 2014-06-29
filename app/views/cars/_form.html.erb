@@ -60,9 +60,10 @@
     </div>
   </div>
   
-   <div class="field">
-    <%= f.file_field :avatar %>
-    </div>
+  
+  <div class="field">
+    <%= file_field_tag "images[]", type: :file, multiple: true %>
+  </div>
 
   
   <div class="form-actions">
