@@ -14,7 +14,7 @@
   <legend>New Car</legend>
   <div class="field">
     <%= f.label :brand %><br>
-    <%= f.select :brand, Car::BRAND_TYPE, prompt: 'Select a Brand' %>
+    <%= f.collection_select(:brand_id, Brand.all, :id, :name) %>    
   </div>
   <div class="field">
     <%= f.label :model %><br>
@@ -52,11 +52,9 @@
     <%= f.label :remarks %><br>
     <%= f.text_area :remarks %>
   </div>
-  
   <div class="field">
-  <%= f.file_field :avatar %>
-  </div>
-  
+    <%= file_field_tag "images[]", type: :file, multiple: true %>
+  </div>  
   </fieldset>
   <div class="actions">
     <%= f.submit %>

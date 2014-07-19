@@ -5,11 +5,11 @@
     <td>
       <%= link_to( image_tag(car.avatar.url(:thumb)), car, class: 'list_image') %>
     </td>
-    
+     
     <td class="list_description">
       <dl>
-        <dt><%= link_to car.brand, car %></dt>
-        <dd>Car Brand: <%= car.brand %></dd>
+        <dt><%= link_to car.brand.name, car %></dt>
+        <dd>Car Brand: <%= car.brand.name %></dd>
         <dd>Car Model: <%= car.model %></dd>
         <dd>Available Period: <%= car.rentaldates %></dd>
         <dd>Rental Price: <%= car.price %></dd>
