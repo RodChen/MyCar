@@ -1,74 +1,64 @@
 <%= form_for(@car, :url => cars_path, :html => { :multipart => true }) do |f| %>
- 
-  <div class="control-group">
-    <%= f.label :brand, :class => 'control-label' %>
-    <div class="controls">
-   
-    <%= f.collection_select :brand_id, Brand.all, :id, :name, :class => 'text_field' %>
-    </div>
-  </div>
+  <% if @car.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@car.errors.count, "error") %> prohibited this car from being saved:</h2>
 
-  <div class="control-group">
-    <%= f.label :model, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :model, :class => 'text_field' %>
+      <ul>
+      <% @car.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
     </div>
+  <% end %>
+  <fieldset>
+  <legend>New Car</legend>
+  <div class="field">
+    <%= f.label :brand %><br>
+    <%= f.select :brand, Car::BRAND_TYPE, prompt: 'Select a Brand' %>
   </div>
-  <div class="control-group">
-    <%= f.label :year, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.number_field :year, :class => 'number_field' %>
-    </div>
+  <div class="field">
+    <%= f.label :model %><br>
+    <%= f.text_field :model %>
   </div>
-   <div class="control-group">
-    <%= f.label :price, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.number_field :price, :class => 'number_field' %>
-    </div>
+  <div class="field">
+    <%= f.label :year %><br>
+    <%= f.number_field :year %>
   </div>
-  <div class="control-group">
-    <%= f.label :location, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :location, :class => 'text_field' %>
-    </div>
+  <div class="field">
+    <%= f.label :rentaldates %><br>
+    <%= f.date_select :rentaldates %>
   </div>
-
-  <div class="control-group">
-    <%= f.label :auto_transmission, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.check_box :auto_transmission, :class => 'check_box' %>
-    </div>
+  <div class="field">
+    <%= f.label :price %><br>
+    <%= f.number_field :price %>
   </div>
-
-  <div class="control-group">
-    <%= f.label :mileage, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.number_field :mileage, :class => 'number_field' %>
-    </div>
+  <div class="field">
+    <%= f.label :location %><br>
+    <%= f.text_field :location %>
   </div>
-  <div class="control-group">
-    <%= f.label :color, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :color, :class => 'text_field' %>
-    </div>
+  <div class="field">
+    <%= f.label :auto_transmission %><br>
+    <%= f.check_box :auto_transmission %>
   </div>
-  
-  <div class="control-group">
-    <%= f.label :remarks, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :remarks, :class => 'text_field' %>
-    </div>
+  <div class="field">
+    <%= f.label :mileage %><br>
+    <%= f.number_field :mileage %>
   </div>
-  
+  <div class="field">
+    <%= f.label :color %><br>
+    <%= f.text_field :color %>
+  </div>
+  <div class="field">
+    <%= f.label :remarks %><br>
+    <%= f.text_area :remarks %>
+  </div>
   
   <div class="field">
-    <%= file_field_tag "images[]", type: :file, multiple: true %>
+  <%= f.file_field :avatar %>
   </div>
-
   
-  <div class="form-actions">
-  <%= f.submit nil, :class => 'btn btn-primary' %>
-    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                cars_path, :class => 'btn' %>
+  </fieldset>
+  <div class="actions">
+    <%= f.submit %>
   </div>
 <% end %>

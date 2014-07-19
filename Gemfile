@@ -38,8 +38,6 @@ end
 
 gem 'devise'
 
-gem "twitter-bootstrap-rails"
-
 group :development do
   gem 'rubocop', require: false
 end
