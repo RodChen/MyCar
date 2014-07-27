@@ -1,4 +1,4 @@
-<%= form_for(@car, :url => cars_path, :html => { :multipart => true }) do |f| %>
+<%= form_for @car, :html => { :multipart => true } do |f| %>
   <% if @car.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@car.errors.count, "error") %> prohibited this car from being saved:</h2>
@@ -10,53 +10,54 @@
       </ul>
     </div>
   <% end %>
-  <fieldset>
-  <legend>New Car</legend>
+
   <div class="field">
-    <%= f.label :brand %><br>
-    <%= f.collection_select(:brand_id, Brand.all, :id, :name) %>    
+    <%= f.label :brand, :class => 'control-label' %>
+    <%= f.collection_select(:brand_id, Brand.all, :id, :name, {}, {:class=>'form-control'}) %>    
   </div>
-  <div class="field">
-    <%= f.label :model %><br>
-    <%= f.text_field :model %>
+  <div class="form-group">
+    <%= f.label :model, :class => 'control-label' %>
+    <%= f.text_field :model, :class => 'form-control' %>
   </div>
-  <div class="field">
-    <%= f.label :year %><br>
-    <%= f.number_field :year %>
+  <div class="form-group">
+    <%= f.label :year, :class => 'control-label' %>
+    <%= f.text_field :year, :class => 'form-control' %>
   </div>
-  <div class="field">
-    <%= f.label :rentaldates %><br>
-    <%= f.date_select :rentaldates %>
+  <div class="form-group">
+    <%= f.label :rentaldates, :class => 'control-label' %>
+    <%= f.text_field :rentaldates, :class => 'datepicker' %>
   </div>
-  <div class="field">
-    <%= f.label :price %><br>
-    <%= f.number_field :price %>
+  <div class="form-group">
+    <%= f.label :price, :class => 'control-label' %>
+    <%= f.text_field :price, :class => 'form-control' %>
   </div>
-  <div class="field">
-    <%= f.label :location %><br>
-    <%= f.text_field :location %>
+  <div class="form-group">
+    <%= f.label :location, :class => 'control-label' %>
+    <%= f.text_field :location, :class => 'form-control' %>
   </div>
-  <div class="field">
-    <%= f.label :auto_transmission %><br>
+  <div class="checkbox">
+    <%= f.label :auto_transmission, :class => 'control-label' %>
     <%= f.check_box :auto_transmission %>
   </div>
-  <div class="field">
-    <%= f.label :mileage %><br>
-    <%= f.number_field :mileage %>
+  <div class="form-group">
+    <%= f.label :mileage, :class => 'control-label' %>
+    <%= f.text_field :mileage, :class => 'form-control' %>
   </div>
-  <div class="field">
-    <%= f.label :color %><br>
-    <%= f.text_field :color %>
+  <div class="form-group">
+    <%= f.label :color, :class => 'control-label' %>
+    <%= f.text_field :color, :class => 'form-control' %>
   </div>
-  <div class="field">
-    <%= f.label :remarks %><br>
-    <%= f.text_area :remarks %>
+  <div class="form-group">
+    <%= f.label :remarks, :class => 'control-label' %>
+    <%= f.text_field :remarks, :class => 'form-control' %>
   </div>
+
   <div class="field">
     <%= file_field_tag "images[]", type: :file, multiple: true %>
   </div>  
-  </fieldset>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+
+  <%= f.submit nil, :class => 'btn btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+            cars_path, :class => 'btn btn-default' %>
+
 <% end %>

@@ -1,88 +1,47 @@
-<%= stylesheet_link_tag "event_calendar" %>
-<p id="notice"><%= notice %></p>
-<fieldset>
-<legend>Car Info</legend>  
-<p>
-  <strong>Brand:</strong>
-  <%= @car.brand.name %>
-</p>
-
-<p>
-  <strong>Model:</strong>
-  <%= @car.model %>
-</p>
-
-<p>
-  <strong>Year:</strong>
-  <%= @car.year %>
-</p>
-
-<p>
-  <strong>Rentaldates:</strong>
-  <%= @car.rentaldates %>
-</p>
-
-<p>
-  <strong>Price:</strong>
-  <%= @car.price %>
-</p>
-
-<p>
-  <strong>Location:</strong>
-  <%= @car.location %>
-</p>
-
-<p>
-  <strong>Auto transmission:</strong>
-  <%= @car.auto_transmission %>
-</p>
-
-<p>
-  <strong>Mileage:</strong>
-  <%= @car.mileage %>
-</p>
-
-<p>
-  <strong>Color:</strong>
-  <%= @car.color %>
-</p>
-
-<% @car.pictures.each do |picture| %>
-<%= image_tag picture.image.url(:medium) %>
-<% end %>
-
-<p>
-  <strong>Remarks:</strong>
-  <%= @car.remarks %>
-</p>
-
-
-
-<%= button_to 'Lease', car_items_path(car_id: @car) %>
-
-
-</fieldset>
-<h2>Reviews</h2>
-<div id="reviews">
-  <% @car.reviews.each do |review| %>
-  <%= div_for review do %>
-  <p>
-    <strong>Posted <%= time_ago_in_words(review.created_at) %></strong><br />
-    <%= h(review.ratings) %>
-    <%= h(review.comment) %>
-  </p>
-  <% end %>
-  <% end %>
+<%- model_class = Car -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
 </div>
 
-<%= form_for([@car, Review.new]) do |f| %>
-<p><%= f.label :ratings, "New Ratings" %><br />
-   <%= f.text_area :ratings %><br />
-   <%= f.label :comment, "New Comment" %><br />
-   <%= f.text_area :comment %>
-</p>
-<p><%= f.submit "Add Comment" %> </p>
-<% end %>
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:model) %>:</strong></dt>
+  <dd><%= @car.model %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:year) %>:</strong></dt>
+  <dd><%= @car.year %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:rentaldates) %>:</strong></dt>
+  <dd><%= @car.rentaldates %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:price) %>:</strong></dt>
+  <dd><%= @car.price %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:location) %>:</strong></dt>
+  <dd><%= @car.location %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:auto_transmission) %>:</strong></dt>
+  <dd><%= @car.auto_transmission %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:mileage) %>:</strong></dt>
+  <dd><%= @car.mileage %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:color) %>:</strong></dt>
+  <dd><%= @car.color %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:remarks) %>:</strong></dt>
+  <dd><%= @car.remarks %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:avatar_file_name) %>:</strong></dt>
+  <dd><%= @car.avatar_file_name %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:avatar_content_type) %>:</strong></dt>
+  <dd><%= @car.avatar_content_type %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:avatar_file_size) %>:</strong></dt>
+  <dd><%= @car.avatar_file_size %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:avatar_updated_at) %>:</strong></dt>
+  <dd><%= @car.avatar_updated_at %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:user_id) %>:</strong></dt>
+  <dd><%= @car.user_id %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:brand_id) %>:</strong></dt>
+  <dd><%= @car.brand_id %></dd>
+</dl>
 
-<%= link_to 'Edit', edit_car_path(@car) %> |
-<%= link_to 'Back', cars_path %>
+<%= link_to t('.back', :default => t("helpers.links.back")),
+              cars_path, :class => 'btn btn-default'  %>
+<%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_car_path(@car), :class => 'btn btn-default' %>
+<%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              car_path(@car),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
