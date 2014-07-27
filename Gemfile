@@ -20,8 +20,10 @@ gem 'coffee-rails', '~> 4.0.0'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
-
 gem 'jquery-ui-rails'
+gem "therubyracer"
+gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
+gem "twitter-bootstrap-rails", git: 'https://github.com/seyhunak/twitter-bootstrap-rails.git', branch: 'bootstrap3'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
@@ -30,8 +32,6 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 
 gem 'paperclip', github: 'thoughtbot/paperclip'
-
-gem 'event-calendar', :require => 'event_calendar'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.

@@ -15,3 +15,7 @@
 //= require turbolinks
 //= require_tree .
 //= require jquery.ui.datepicker
+
+$(function() {
+  $('.datepicker').datepicker();
+});
