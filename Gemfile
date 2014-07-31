@@ -19,8 +19,8 @@ gem 'coffee-rails', '~> 4.0.0'
 # gem 'therubyracer', platforms: :ruby
 
 # Use jquery as the JavaScript library
-gem 'jquery-rails'
-gem 'jquery-ui-rails'
+gem 'jquery-rails', '3.1.0'
+gem 'jquery-ui-rails', '4.2.1'
 gem "therubyracer"
 gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
 gem "twitter-bootstrap-rails", git: 'https://github.com/seyhunak/twitter-bootstrap-rails.git', branch: 'bootstrap3'
