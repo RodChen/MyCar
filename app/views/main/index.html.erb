@@ -13,7 +13,7 @@
       <div class="row">
         <% @cars.each do |car|; %>
           <div class="col-md-4">
-            <h2><%= "#{car.brand.name} #{car.model} #{car.year}" %></h2>
+            <h2><%= "#{car.brand.name} #{car.model} " %><small><%= "#{car.year}" %></small></h2>
             <%= image_tag car.avatar.url(:medium) %>
             <h4><%= "$#{car.price}/day" %> </h4>  
             <h4><%= car.location %> </h4>
