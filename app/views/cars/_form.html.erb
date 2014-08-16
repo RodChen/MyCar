@@ -1,3 +1,9 @@
+<script>
+  $(function() {
+  $( "#datepicker" ).datepicker();
+  });
+</script>
+
 <%= form_for @car, :html => { :multipart => true } do |f| %>
   <% if @car.errors.any? %>
     <div id="error_explanation">
@@ -25,7 +31,7 @@
   </div>
   <div class="form-group">
     <%= f.label :rentaldates, :class => 'control-label' %>
-    <%= f.text_field :rentaldates, :class => 'datepicker' %>
+    <%= f.text_field :rentaldates, :class => 'form-control', id: 'datepicker' %>
   </div>
   <div class="form-group">
     <%= f.label :price, :class => 'control-label' %>
