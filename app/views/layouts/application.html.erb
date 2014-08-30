@@ -53,12 +53,12 @@
         <% end %>
 
       </div><!--/.navbar-collapse -->
-    </div>
+           
+      <%= yield %>
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+    </div><!--/.container -->
   </div>
-
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
-<%= yield %>
 
 </body>
 </html>
