@@ -1,0 +1,22 @@
+<h2>Where is your car?</h2>
+<%= form_for @car, url: wizard_path do |f| %>
+  <% if @car.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@car.errors.count, "error") %> prohibited this car from being saved:</h2>
+
+      <ul>
+      <% @car.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <div class="form-group">
+    <%= f.label :location, :class => 'control-label' %>
+    <%= f.text_field :location, :class => 'form-control' %>
+  </div>
+
+  <%= f.submit 'Continue', :class => 'btn btn-primary' %>
+  or <%= link_to "Skip", next_wizard_path %>
+<% end %>

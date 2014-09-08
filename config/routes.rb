@@ -11,6 +11,7 @@ MyCar::Application.routes.draw do
   root 'main#index', as: 'main'
   resources :cars do
     resources :reviews
+    resources :build, controller: 'cars/build'
   end
 
   post 'cars/search' => 'cars#search'

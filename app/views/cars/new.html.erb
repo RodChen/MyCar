@@ -2,4 +2,61 @@
 <div class="page-header">
   <h1><%=t '.title', :default => [:'helpers.titles.new', 'New %{model}'], :model => model_class.model_name.human.titleize %></h1>
 </div>
-<%= render :partial => 'form' %>
+
+<script>
+  $(function() {
+  $( "#datepicker" ).datepicker();
+  });
+</script>
+
+<%= form_for @car, :html => { :multipart => true } do |f| %>
+  <% if @car.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@car.errors.count, "error") %> prohibited this car from being saved:</h2>
+
+      <ul>
+      <% @car.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :brand, :class => 'control-label' %>
+    <%= f.collection_select(:brand_id, Brand.all, :id, :name, {}, {:class=>'form-control'}) %>    
+  </div>
+  <div class="form-group">
+    <%= f.label :model, :class => 'control-label' %>
+    <%= f.text_field :model, :class => 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :year, :class => 'control-label' %>
+    <%= f.text_field :year, :class => 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :rentaldates, :class => 'control-label' %>
+    <%= f.text_field :rentaldates, :class => 'form-control', id: 'datepicker' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :price, :class => 'control-label' %>
+    <%= f.text_field :price, :class => 'form-control' %>
+  </div>
+  <div class="checkbox">
+    <%= f.label :auto_transmission, :class => 'control-label' %>
+    <%= f.check_box :auto_transmission %>
+  </div>
+  <div class="form-group">
+    <%= f.label :mileage, :class => 'control-label' %>
+    <%= f.text_field :mileage, :class => 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :remarks, :class => 'control-label' %>
+    <%= f.text_field :remarks, :class => 'form-control' %>
+  </div>
+
+  <%= f.submit nil, :class => 'btn btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+            cars_path, :class => 'btn btn-default' %>
+
+<% end %>

@@ -42,9 +42,11 @@ class CarsController < ApplicationController
           @car.pictures.create(image: image)
         }
         end
-        
-        format.html { redirect_to @car, notice: 'Car was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @car }
+
+        format.html { redirect_to car_build_index_path @car }
+
+        #format.html { redirect_to @car, notice: 'Car was successfully created.' }
+        #format.json { render action: 'show', status: :created, location: @car }
       else
         format.html { render action: 'new' }
         format.json { render json: @car.errors, status: :unprocessable_entity }
@@ -76,9 +78,9 @@ class CarsController < ApplicationController
     end
   end
 
-def search
-  @cars = Car.search params[:search]
-end
+  def search
+    @cars = Car.search params[:search]
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

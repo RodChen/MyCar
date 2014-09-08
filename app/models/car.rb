@@ -7,7 +7,7 @@ class Car < ActiveRecord::Base
 	validates_presence_of :brand_id
 	validates_presence_of :model
 	validates_presence_of :price
-	validates_presence_of :location
+	#validates_presence_of :location
 	validates_presence_of :mileage
 	validates :price, numericality: {greater_than_or_equal_to: 100}
 	has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/:style/missing.png"
