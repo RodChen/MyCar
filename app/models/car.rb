@@ -15,6 +15,9 @@ class Car < ActiveRecord::Base
    
   	before_destroy :ensure_not_referenced_by_any_car_item
 
+  	geocoded_by :location
+  	after_validation :geocode
+
 	def self.search(search)
 	  search_condition = "%" + search + "%"
 	  find(:all, :conditions => ['location LIKE ? OR remarks LIKE ?', search_condition, search_condition])

@@ -14,6 +14,8 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require turbolinks
+//= require underscore
+//= require gmaps/google
 //= require_tree .
 //= require jquery.ui.datepicker
 

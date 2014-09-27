@@ -80,6 +80,12 @@ class CarsController < ApplicationController
 
   def search
     @cars = Car.search params[:search]
+    @hash = Gmaps4rails.build_markers(@cars) do |car, marker|
+      marker.lat car.latitude
+      marker.lng car.longitude
+      logger.debug {"car latitude: #{car.latitude}"}
+      logger.debug {"car longitude: #{car.longitude}"}
+    end
   end
 
   private

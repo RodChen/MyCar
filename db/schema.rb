@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140623231821) do
+ActiveRecord::Schema.define(version: 20140913100733) do
 
   create_table "brands", force: true do |t|
     t.string   "name"
@@ -49,9 +49,9 @@ ActiveRecord::Schema.define(version: 20140623231821) do
     t.datetime "avatar_updated_at"
     t.integer  "user_id"
     t.integer  "brand_id"
+    t.float    "latitude"
+    t.float    "longitude"
   end
-
-  add_index "cars", ["brand_id"], name: "index_cars_on_brand_id"
 
   create_table "events", force: true do |t|
     t.string   "name"

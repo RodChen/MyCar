@@ -71,6 +71,8 @@ GEM
       warden (~> 1.2.3)
     erubis (2.7.0)
     execjs (2.0.2)
+    geocoder (1.2.4)
+    gmaps4rails (2.1.2)
     hike (1.2.3)
     i18n (0.6.11)
     jbuilder (1.5.3)
@@ -176,6 +178,8 @@ PLATFORMS
 DEPENDENCIES
   coffee-rails (~> 4.0.0)
   devise
+  geocoder
+  gmaps4rails
   jbuilder (~> 1.2)
   jquery-rails (= 3.1.0)
   jquery-ui-rails (= 4.2.1)

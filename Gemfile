@@ -35,6 +35,8 @@ gem 'paperclip', github: 'thoughtbot/paperclip'
 
 # build a multi-step form
 gem 'wicked'
+gem 'geocoder'
+gem 'gmaps4rails'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
