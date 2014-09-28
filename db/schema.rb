@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140913100733) do
+ActiveRecord::Schema.define(version: 20140921084323) do
 
   create_table "brands", force: true do |t|
     t.string   "name"
@@ -30,6 +30,17 @@ ActiveRecord::Schema.define(version: 20140913100733) do
 
   add_index "car_items", ["car_id"], name: "index_car_items_on_car_id"
   add_index "car_items", ["lease_id"], name: "index_car_items_on_lease_id"
+
+  create_table "car_photos", force: true do |t|
+    t.string   "caption"
+    t.integer  "car_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
+  end
 
   create_table "cars", force: true do |t|
     t.string   "model"
@@ -53,6 +64,8 @@ ActiveRecord::Schema.define(version: 20140913100733) do
     t.float    "longitude"
   end
 
+  add_index "cars", ["brand_id"], name: "index_cars_on_brand_id"
+
   create_table "events", force: true do |t|
     t.string   "name"
     t.datetime "start_at"
@@ -75,6 +88,13 @@ ActiveRecord::Schema.define(version: 20140913100733) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+  end
+
+  create_table "posts", force: true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "reviews", force: true do |t|
