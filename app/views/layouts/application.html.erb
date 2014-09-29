@@ -55,17 +55,12 @@
       </div><!--/.navbar-collapse -->          
     </div><!--/.container -->
   </div>
-
+ 
   <div class="container">
     <div class="row">
       <div class="col-md-12">
-        <div class="alert alert-warning alert-dismissible" role="alert">
-          <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-          <strong>Warning!</strong> This is workaround for layout offset.
-        </div>
-        
+        <%= bootstrap_flash %>
         <%= yield %>
-
         <hr>
         <footer>
           <p>&copy; Company 2014</p>
