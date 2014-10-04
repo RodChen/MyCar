@@ -1,5 +1,5 @@
 class CarsController < ApplicationController
-  before_action :set_car, only: [:show, :edit, :update, :destroy, :edit_location, :edit_pictures]
+  before_action :set_car, only: [:show, :edit, :update, :destroy, :edit_location, :edit_pictures, :edit_calendar]
   before_action :authenticate_user!, except: [:index, :show]
   
   # GET /cars
@@ -30,6 +30,14 @@ class CarsController < ApplicationController
 
   # GET /cars/1/edit_location
   def edit_location
+  end
+
+  # GET /cars/1/edit_pictures
+  def edit_pictures    
+  end
+
+  # GET /cars/1/edit_calendar
+  def edit_calendar    
   end
 
   # POST /cars

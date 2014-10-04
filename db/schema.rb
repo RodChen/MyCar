@@ -49,9 +49,12 @@ ActiveRecord::Schema.define(version: 20140913100733) do
     t.datetime "avatar_updated_at"
     t.integer  "user_id"
     t.integer  "brand_id"
+    t.string   "status"
     t.float    "latitude"
     t.float    "longitude"
   end
+
+  add_index "cars", ["brand_id"], name: "index_cars_on_brand_id"
 
   create_table "events", force: true do |t|
     t.string   "name"
@@ -75,6 +78,13 @@ ActiveRecord::Schema.define(version: 20140913100733) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+  end
+
+  create_table "posts", force: true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "reviews", force: true do |t|
