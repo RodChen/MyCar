@@ -12,6 +12,11 @@ MyCar::Application.routes.draw do
   resources :cars do
     resources :reviews
     resources :build, controller: 'cars/build'
+    member do
+      get 'edit_location'
+      get 'edit_pictures'
+      get 'edit_calendar'
+    end
   end
 
   post 'cars/search' => 'cars#search'

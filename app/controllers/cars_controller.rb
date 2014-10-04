@@ -1,5 +1,6 @@
 class CarsController < ApplicationController
-  before_action :set_car, only: [:show, :edit, :update, :destroy]
+  before_action :set_car, only: [:show, :edit, :update, :destroy,
+    :edit_location, :edit_pictures, :edit_calendar]
   before_action :authenticate_user!, except: [:index, :show]
   
   # GET /cars
@@ -26,6 +27,18 @@ class CarsController < ApplicationController
 
   # GET /cars/1/edit
   def edit
+  end
+
+  # GET /cars/1/edit_location
+  def edit_location
+  end
+
+  # GET /cars/1/edit_pictures
+  def edit_pictures    
+  end
+
+  # GET /cars/1/edit_calendar
+  def edit_calendar    
   end
 
   # POST /cars
@@ -97,7 +110,8 @@ class CarsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def car_params
-      params.require(:car).permit(:brand, :model, :year, :rentaldates, :price, :location, :auto_transmission, :mileage, :color, :image_url, :remarks, :avatar, :brand_id)
+      params.require(:car).permit(:brand, :model, :year, :rentaldates, :price, :location,
+        :auto_transmission, :mileage, :color, :image_url, :remarks, :avatar, :brand_id)
     end
 
 end
