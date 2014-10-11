@@ -2,16 +2,14 @@
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
       <div class="container">
-        <h1>Hello, world!</h1>
-        <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-      
+        <h1>My Car Your Car</h1>
+        <p>新形態租車平台</p>
+
 
       <%= form_tag :controller => 'cars', :action => 'search', url: cars_search_path do %>
       <%= text_field_tag :search, params[:search], :id => 'search_field' %>
-      <%= submit_tag "Find Cars>>", :name => nil, class: "btn btn-primary" %> 
-      <%= link_to_function "Clear", "$('search_field').clear()" , class: "btn btn-default" %>
+      <%= submit_tag "Find Cars", :name => nil, class: "btn btn-primary" %> 
       <% end %>
-      
       
       </div>
     </div>
@@ -19,15 +17,14 @@
     <div class="container">
       <!-- Example row of columns -->
       <div class="row">
-        <% @cars.each do |car|; %>
+        <% @cars.each_with_index do |car, index|; %>
           <div class="col-md-4">
             <h2><%= "#{car.brand.name} #{car.model} " %><small><%= "#{car.year}" %></small></h2>
-            <%= image_tag car.avatar.url(:medium) %>
+            <%= image_tag car.pictures[0].image.url(:medium) %>
             <h4><%= "$#{car.price}/day" %> </h4>  
             <h4><%= car.location %> </h4>
             <p><%= car.remarks %> </p>
-            <p>This a car description. This a car description. This a car description. This a car description. This a car description. This a car description. This a car description. This a car description. This a car description. This a car description.</p>
-            <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+            <%= link_to 'Details', car, class: 'btn btn-default' %>
           </div>
         <% end %>
       </div>

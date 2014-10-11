@@ -5,6 +5,10 @@ class Cars::BuildController < ApplicationController
 
   def show
     @car = Car.find(params[:car_id])
+      case step
+      when :picture
+        10.times {@car.pictures.build}
+      end
     render_wizard
   end
 
@@ -22,7 +26,7 @@ class Cars::BuildController < ApplicationController
   private
   # Never trust parameters from the scary internet, only allow the white list through.
   def car_params
-    params.require(:car).permit(:brand, :model, :year, :rentaldates, :price, :location, :auto_transmission, :mileage, :color, :image_url, :remarks, :avatar, :brand_id)
+    params.require(:car).permit(:brand, :model, :year, :rentaldates, :price, :location, :auto_transmission, :mileage, :color, :image_url, :remarks, :avatar, :brand_id, pictures_attributes: [:title, :image, :_destroy])
   end
 
   def finish_wizard_path

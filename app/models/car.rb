@@ -4,24 +4,24 @@ class Car < ActiveRecord::Base
 	has_many :pictures, :dependent => :destroy
 	belongs_to :user
 	belongs_to :brand
+#Validation
 	validates_presence_of :brand_id
 	validates_presence_of :model
 	validates_presence_of :price
-	#validates_presence_of :location
 	validates_presence_of :mileage
 	validates :price, numericality: {greater_than_or_equal_to: 100}
 	has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/:style/missing.png"
-  	validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
-   
+  	validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/  
   	before_destroy :ensure_not_referenced_by_any_car_item
-
   	geocoded_by :location
-  	#after_validation :geocode
   	after_validation :geocode, if: ->(obj){ obj.location.present? and obj.location_changed? }
+	accepts_nested_attributes_for :pictures, allow_destroy: true
 
-	def self.search(search)
-	  search_condition = "%" + search + "%"
-	  find(:all, :conditions => ['location LIKE ? OR remarks LIKE ?', search_condition, search_condition])
+	def self.search(search)				
+		search_condition = "%" + search + "%"
+		find(:all, :conditions => ['location LIKE ? OR remarks LIKE ?', search_condition, search_condition])
+		#  search_condition = "%" + search + "%"
+		 # find(:all, :conditions => ['location LIKE ? OR remarks LIKE ?', search_condition, search_condition])
 	end
 
 	private

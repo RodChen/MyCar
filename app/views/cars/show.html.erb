@@ -1,47 +1,65 @@
 <%- model_class = Car -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
 </div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:model) %></th>
+      <th><%= model_class.human_attribute_name(:year) %></th>
+      <th><%= model_class.human_attribute_name(:rentaldates) %></th>
+      <th><%= model_class.human_attribute_name(:price) %></th>
+      <th><%= model_class.human_attribute_name(:location) %></th>
+      <th><%= model_class.human_attribute_name(:auto_transmission) %></th>
+      <th><%= model_class.human_attribute_name(:mileage) %></th>
+      <th><%= model_class.human_attribute_name(:color) %></th>
+      <th><%= model_class.human_attribute_name(:remarks) %></th>
+      <th><%= model_class.human_attribute_name(:user_id) %></th>
+      <th><%= model_class.human_attribute_name(:brand) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+        <tr>
+        <td><%= @car.model %></td>
+        <td><%= @car.year %></td>
+        <td><%= @car.rentaldates %></td>
+        <td><%= @car.price %></td>
+        <td><%= @car.location %></td>
+        <td><%= @car.auto_transmission %></td>
+        <td><%= @car.mileage %></td>
+        <td><%= @car.color %></td>
+        <td><%= @car.remarks %></td>
+        <td><%= @car.user_id %></td>
+        <td><%= @car.brand.name %></td>
+        <td><%= @car.created_at %></td>
+        <td>
+        
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_car_path(@car), :class => 'btn btn-default btn-xs' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      car_path(@car),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-xs btn-danger' %>
+        </td>
+      </tr>
+  </tbody>
+</table>
 
-<dl class="dl-horizontal">
-  <dt><strong><%= model_class.human_attribute_name(:model) %>:</strong></dt>
-  <dd><%= @car.model %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:year) %>:</strong></dt>
-  <dd><%= @car.year %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:rentaldates) %>:</strong></dt>
-  <dd><%= @car.rentaldates %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:price) %>:</strong></dt>
-  <dd><%= @car.price %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:location) %>:</strong></dt>
-  <dd><%= @car.location %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:auto_transmission) %>:</strong></dt>
-  <dd><%= @car.auto_transmission %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:mileage) %>:</strong></dt>
-  <dd><%= @car.mileage %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:color) %>:</strong></dt>
-  <dd><%= @car.color %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:remarks) %>:</strong></dt>
-  <dd><%= @car.remarks %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:avatar_file_name) %>:</strong></dt>
-  <dd><%= @car.avatar_file_name %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:avatar_content_type) %>:</strong></dt>
-  <dd><%= @car.avatar_content_type %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:avatar_file_size) %>:</strong></dt>
-  <dd><%= @car.avatar_file_size %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:avatar_updated_at) %>:</strong></dt>
-  <dd><%= @car.avatar_updated_at %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:user_id) %>:</strong></dt>
-  <dd><%= @car.user_id %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:brand_id) %>:</strong></dt>
-  <dd><%= @car.brand_id %></dd>
-</dl>
-
-<%= link_to t('.back', :default => t("helpers.links.back")),
-              cars_path, :class => 'btn btn-default'  %>
-<%= link_to t('.edit', :default => t("helpers.links.edit")),
-              edit_car_path(@car), :class => 'btn btn-default' %>
-<%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-              car_path(@car),
-              :method => 'delete',
-              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-              :class => 'btn btn-danger' %>
+<% @car.pictures.each do |photo| %>
+  <% if !photo.title.empty? %>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="thumbnail">
+            <%= image_tag photo.image.url  %> 
+          <div class="caption">
+              <%= "說明 #{photo.title}" %>
+          </div>
+        </div>
+      </div>
+    </div>  
+  <% else %>
+  <% end %>  
+<% end %>

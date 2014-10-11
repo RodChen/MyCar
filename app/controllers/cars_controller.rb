@@ -34,7 +34,8 @@ class CarsController < ApplicationController
   end
 
   # GET /cars/1/edit_pictures
-  def edit_pictures    
+  def edit_pictures
+
   end
 
   # GET /cars/1/edit_calendar
@@ -45,17 +46,9 @@ class CarsController < ApplicationController
   # POST /cars.json
   def create
     @car = current_user.cars.new(car_params)
-
+  
     respond_to do |format|
       if @car.save
-
-        if params[:images]
-        #===== The magic is here ;)
-        params[:images].each { |image|
-          @car.pictures.create(image: image)
-        }
-        end
-
         format.html { redirect_to car_build_index_path @car }
 
         #format.html { redirect_to @car, notice: 'Car was successfully created.' }
@@ -70,6 +63,7 @@ class CarsController < ApplicationController
   # PATCH/PUT /cars/1
   # PATCH/PUT /cars/1.json
   def update
+
     respond_to do |format|
       if @car.update(car_params)
         format.html { redirect_to @car, notice: 'Car was successfully updated.' }
@@ -96,22 +90,23 @@ class CarsController < ApplicationController
     @hash = Gmaps4rails.build_markers(@cars) do |car, marker|
       marker.lat car.latitude
       marker.lng car.longitude
-      logger.debug {"car latitude: #{car.latitude}"}
-      logger.debug {"car longitude: #{car.longitude}"}
     end
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_car
-      @car = current_user.cars.find(params[:id])
+    #  if (params[:id].is_a? Integer)
+        @car = current_user.cars.find(params[:id])
+    #  else
+    #    @car = current_user.cars.find(21)
+    #  end
 
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def car_params
       params.require(:car).permit(:brand, :model, :year, :rentaldates, :price, :location,
-        :auto_transmission, :mileage, :color, :image_url, :remarks, :avatar, :brand_id)
+        :auto_transmission, :mileage, :color, :image_url, :remarks, :avatar, :brand_id, pictures_attributes: [:id, :title, :image, :_destroy])
     end
-
 end

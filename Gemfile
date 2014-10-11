@@ -32,6 +32,7 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 
 gem 'paperclip', github: 'thoughtbot/paperclip'
+gem 'redcarpet', '~> 2.1.1'
 
 # build a multi-step form
 gem 'wicked'

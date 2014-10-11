@@ -15,5 +15,7 @@
 /log/*.log
 /tmp
 
+/doc/api
+
 /public/system/cars/avatars/*
 /public/system/*
