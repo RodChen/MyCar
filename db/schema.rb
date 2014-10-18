@@ -49,9 +49,12 @@ ActiveRecord::Schema.define(version: 20141004113013) do
     t.datetime "avatar_updated_at"
     t.integer  "user_id"
     t.integer  "brand_id"
+    t.string   "status"
     t.float    "latitude"
     t.float    "longitude"
   end
+
+  add_index "cars", ["brand_id"], name: "index_cars_on_brand_id"
 
   create_table "events", force: true do |t|
     t.string   "name"
@@ -66,6 +69,16 @@ ActiveRecord::Schema.define(version: 20141004113013) do
     t.datetime "updated_at"
   end
 
+  create_table "non_available_dates", force: true do |t|
+    t.integer  "car_id"
+    t.datetime "start_datetime"
+    t.datetime "end_datetime"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "non_available_dates", ["car_id"], name: "index_non_available_dates_on_car_id"
+
   create_table "pictures", force: true do |t|
     t.integer  "car_id"
     t.string   "title"
@@ -78,6 +91,13 @@ ActiveRecord::Schema.define(version: 20141004113013) do
   end
 
   add_index "pictures", ["car_id"], name: "index_pictures_on_car_id"
+
+  create_table "posts", force: true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "reviews", force: true do |t|
     t.integer  "car_id"
