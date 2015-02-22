@@ -6,7 +6,7 @@ set :repo_url, 'git@bitbucket.org:David0987/mycar.git'
 
 # Default branch is :master
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }
-BRANCH_NAME=capistrano
+BRANCH_NAME='capistrano'
 set :branch, ENV["BRANCH_NAME"] || 'master'
 
 # Default deploy_to directory is /var/www/my_app
