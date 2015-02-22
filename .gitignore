@@ -21,4 +21,4 @@
 /public/system/*
 
 # Ignore sensitive files
-/config/database.yml
+config/database.yml
