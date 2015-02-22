@@ -107,6 +107,7 @@ GEM
     mime-types (1.25.1)
     minitest (4.7.5)
     multi_json (1.10.1)
+    mysql2 (0.3.18)
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
     net-ssh (2.9.2)
@@ -206,6 +207,7 @@ DEPENDENCIES
   jquery-rails (= 3.1.0)
   jquery-ui-rails (= 4.2.1)
   less-rails
+  mysql2
   paperclip!
   rails (= 4.0.4)
   redcarpet (~> 2.1.1)
