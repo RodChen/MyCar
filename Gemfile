@@ -5,6 +5,7 @@ gem 'rails', '4.0.4'
 
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
+gem 'mysql2'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.2'
@@ -54,9 +55,9 @@ group :development do
   #gem 'capistrano-rvm'
 end
 
-group :production do
-  gem 'mysql2'
-end
+# group :production do
+#   gem 'mysql2'
+# end
 
 # Add this if you're using rbenv
 # gem 'capistrano-rbenv', github: "capistrano/rbenv"
