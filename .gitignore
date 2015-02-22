@@ -19,3 +19,6 @@
 
 /public/system/cars/avatars/*
 /public/system/*
+
+# Ignore sensitive files
+/config/database.yml
