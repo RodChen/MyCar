@@ -54,6 +54,10 @@ group :development do
   #gem 'capistrano-rvm'
 end
 
+group :production do
+  gem 'mysql2'
+end
+
 # Add this if you're using rbenv
 # gem 'capistrano-rbenv', github: "capistrano/rbenv"
 
