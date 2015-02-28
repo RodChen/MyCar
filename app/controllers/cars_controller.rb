@@ -1,7 +1,7 @@
 class CarsController < ApplicationController
-  before_action :set_car, only: [:show, :edit, :update, :destroy,
-    :edit_location, :edit_pictures, :edit_calendar]
   before_action :authenticate_user!, except: [:index, :show]
+  before_action :set_car, only: [:edit, :update, :destroy,
+    :edit_location, :edit_pictures, :edit_calendar]
   
   # GET /cars
   # GET /cars.json
@@ -17,7 +17,7 @@ class CarsController < ApplicationController
   # GET /cars/1
   # GET /cars/1.json
   def show
-    
+    @car = Car.find(params[:id]) #current_user.cars.find(params[:id])
   end
 
   # GET /cars/new
