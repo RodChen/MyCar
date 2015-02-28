@@ -2,8 +2,8 @@
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
       <div class="container">
-        <h1>My Car Your Car</h1>
-        <p>新形態租車平台</p>
+        <h1>Rent a cool car</h1>
+        <p>Get a car near you</p>
 
 
       <%= form_tag :controller => 'cars', :action => 'search', url: cars_search_path do %>
@@ -20,8 +20,12 @@
         <% @cars.each_with_index do |car, index|; %>
           <div class="col-md-4">
             <h2><%= "#{car.brand.name} #{car.model} " %><small><%= "#{car.year}" %></small></h2>
-            <%= image_tag car.pictures[0].image.url(:medium) %>
-            <h4><%= "$#{car.price}/day" %> </h4>  
+            <% if car.pictures[0].nil? %>
+              <%= image_tag "defaultCar2.png" %>
+            <% else %>
+              <%= image_tag car.pictures[0].image.url(:medium) %>
+            <% end %>
+            <h4><%= "$#{car.price}/day" %> </h4>
             <h4><%= car.location %> </h4>
             <p><%= car.remarks %> </p>
             <%= link_to 'Details', car, class: 'btn btn-default' %>
