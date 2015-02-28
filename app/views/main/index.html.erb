@@ -3,11 +3,12 @@
     <div class="jumbotron">
       <div class="container">
         <h1>Rent a cool car</h1>
-        <p>Get a car near you</p>
+        <p>Get a car near you in a reasonable price</p>
 
 
       <%= form_tag :controller => 'cars', :action => 'search', url: cars_search_path do %>
-      <%= text_field_tag :search, params[:search], :id => 'search_field' %>
+      <%= text_field_tag :search, params[:search], :id => 'search_field', placeholder: 'Enter city or address', size: 50, class: 'form-control' %>
+      <br/>
       <%= submit_tag "Find Cars", :name => nil, class: "btn btn-primary" %> 
       <% end %>
       
